@@ -25,21 +25,21 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class GetActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private UserAdapter userAdapter;
-    private List<User> userList = new ArrayList<>();
-
+    private List<User> userList;
     private ProgressBar progressBar;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_get);
 
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        userList = new ArrayList<>();
         progressBar = findViewById(R.id.progress);
 
         fetchUsers();
@@ -90,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(MainActivity.this, "Error fetching data", Toast.LENGTH_SHORT).show();
+                        Log.d("TAG", "Error : " + error.getMessage());
                         progressBar.setVisibility(View.GONE);
                     }
                 });
