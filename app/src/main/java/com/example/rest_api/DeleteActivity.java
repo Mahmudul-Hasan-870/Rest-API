@@ -17,7 +17,6 @@ import com.android.volley.toolbox.Volley;
 
 public class DeleteActivity extends AppCompatActivity {
 
-
     private EditText etUserId;
     private Button submitButton;
 

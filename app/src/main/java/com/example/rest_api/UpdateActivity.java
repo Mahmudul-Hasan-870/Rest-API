@@ -58,7 +58,7 @@ public class UpdateActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(String response) {
 
-                        Toast.makeText(UpdateActivity.this, "Data submitted successfully", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(UpdateActivity.this, "Data updated successfully", Toast.LENGTH_SHORT).show();
 
                     }
                 }, new Response.ErrorListener() {
