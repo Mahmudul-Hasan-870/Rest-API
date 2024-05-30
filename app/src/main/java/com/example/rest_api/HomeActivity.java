@@ -29,6 +29,7 @@ public class HomeActivity extends AppCompatActivity {
         get_data = findViewById(R.id.get_data);
         post_data = findViewById(R.id.post_data);
         update_data = findViewById(R.id.update_data);
+        delete_data =findViewById(R.id.delete_data);
 
         get_data.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,6 +48,13 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(HomeActivity.this, UpdateActivity.class));
+            }
+        });
+
+        delete_data.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(HomeActivity.this,DeleteActivity.class));
             }
         });
     }

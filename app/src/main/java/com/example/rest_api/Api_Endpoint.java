@@ -6,4 +6,5 @@ public class Api_Endpoint {
     public static String USERS = BASE_URL + "users";
     public static String POST = BASE_URL + "users";
     public static String UPDATE = BASE_URL + "users/";
+    public static String DELETE = BASE_URL + "users/";
 }
