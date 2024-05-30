@@ -18,17 +18,19 @@ import com.android.volley.toolbox.Volley;
 import java.util.HashMap;
 import java.util.Map;
 
-public class PostActivity extends AppCompatActivity {
+public class UpdateActivity extends AppCompatActivity {
 
 
-    private EditText nameEditText, emailEditText, phoneEditText, passwordEditText;
+    private EditText etUserId, nameEditText, emailEditText, phoneEditText, passwordEditText;
     private Button submitButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_post);
+        setContentView(R.layout.activity_update);
 
 
+        etUserId = findViewById(R.id.etUserId);
         nameEditText = findViewById(R.id.nameEditText);
         emailEditText = findViewById(R.id.emailEditText);
         phoneEditText = findViewById(R.id.phoneEditText);
@@ -38,6 +40,7 @@ public class PostActivity extends AppCompatActivity {
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String userId = etUserId.getText().toString().trim();
                 String name = nameEditText.getText().toString().trim();
                 String email = emailEditText.getText().toString().trim();
                 String phone = phoneEditText.getText().toString().trim();
@@ -45,23 +48,23 @@ public class PostActivity extends AppCompatActivity {
 
                 // Check if any of the fields are empty
                 if (name.isEmpty() || email.isEmpty() || phone.isEmpty() || password.isEmpty()) {
-                    Toast.makeText(PostActivity.this, "Please fill all the fields", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(UpdateActivity.this, "Please fill all the fields", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
-                RequestQueue queue = Volley.newRequestQueue(PostActivity.this);
+                RequestQueue queue = Volley.newRequestQueue(UpdateActivity.this);
 
-                StringRequest stringRequest = new StringRequest(Request.Method.POST, Api_Endpoint.POST, new Response.Listener<String>() {
+                StringRequest stringRequest = new StringRequest(Request.Method.PUT, Api_Endpoint.UPDATE + userId, new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
 
-                        Toast.makeText(PostActivity.this, "Data submitted successfully", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(UpdateActivity.this, "Data submitted successfully", Toast.LENGTH_SHORT).show();
 
                     }
                 }, new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(PostActivity.this, "Error: " + error.getMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(UpdateActivity.this, "Error: " + error.getMessage(), Toast.LENGTH_SHORT).show();
 
                     }
                 }) {
